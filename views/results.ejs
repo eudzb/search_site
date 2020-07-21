@@ -7,7 +7,7 @@ search results
 <ul>
 <% books.forEach((book) => { %>
   <li>
-    <%= book.name %>
+    <%= book._source.title %>
   </li>
 <% })%>
 </ul>
