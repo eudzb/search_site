@@ -16,8 +16,12 @@
   <div class="row">
     <% books.forEach((book) => { %>
       <div class="col-3 my-3">
-        <div class="p-3 bg-white rounded">
-          <%= book._source.title %>
+        <div class="p-3 bg-white rounded d-flex align-items-start">
+          <img src="<%= book._source.formats['image/jpeg'] %>" alt="<%= book._source.title %>" height="100">
+          <div class="d-flex flex-column justify-content-between ml-3">
+            <span class="font-weight-normal"><%= book._source.title %></span>
+            <span class="font-weight-light mt-1"><%= book._source.authors[0].name %></span>
+          </div>
         </div>
       </div>
     <% })%>
