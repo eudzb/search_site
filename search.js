@@ -11,8 +11,13 @@ async function search(query) {
     index: 'books',
     body: {
       query: {
-        match: {
-          title: query
+        multi_match: {
+          query,
+          fields: [
+            'title^3',
+            'authors.name^2',
+            'subjects^1'
+          ]
         }
       }
     }
