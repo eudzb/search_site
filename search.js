@@ -15,7 +15,8 @@ async function search(query) {
 						"title^3",
 						"authors.name^2",
 						"subjects^1",
-					],
+          ],
+          fuzziness: "AUTO"
 				}
 			}
 		}
