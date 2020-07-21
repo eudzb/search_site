@@ -9,9 +9,14 @@ async function search(query) {
   // appeler elasticsearch pour effectuer la recherche
   const result = await client.search({
     index: 'books',
-    body: {}
+    body: {
+      query: {
+        match: {
+          title: query
+        }
+      }
+    }
   })
-  console.log(result.hits.hits);
   return result.hits.hits;
 }
 

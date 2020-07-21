@@ -1,12 +1,8 @@
 const express = require("express")
 const ejs = require("ejs")
-
 const search = require("./search")
-
 const app = express()
-
 const PORT = process.env.PORT || 8080
-
 
 app.set("view engine", "ejs")
 
