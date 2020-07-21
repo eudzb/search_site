@@ -13,12 +13,18 @@
 
   
   <%if (books.length > 0) { %>
-    <h2 class="my-4 text-dark font-weight-light"><% books.length %> Results</h2>
+    <h2 class="mt-5 mb-lg-5 mb-4 text-dark font-weight-light"><% books.length %> Results</h2>
     <div class="row">
       <% books.forEach((book) => { %>
         <div class="col-lg-3 col-md-4 my-3">
-          <div class="p-3 bg-white rounded d-flex align-items-start">
-            <img src="<%= book._source.formats['image/jpeg'] %>" alt="<%= book._source.title %>" height="100">
+          <div class="p-3 bg-white rounded d-flex align-items-start shadow-sm">
+            <img
+            src="<%= book._source.formats['image/jpeg'] %>"
+            alt="<%= book._source.title %>"
+            title="<%= book._source.title %>"
+            height="100"
+            class="rounded shadow-sm"
+            >
             <div class="d-flex flex-column justify-content-between ml-3">
               <span class="font-weight-normal text-dark" style="font-size: 14px;"><%= book._source.title %></span>
               <span class="font-weight-light text-muted mt-1" style="font-size: 13px;"><%= book._source.authors[0].name %></span>
@@ -34,7 +40,7 @@
       <% })%>
     </div>
     <% } else { %>
-      <h2 class="my-4 text-dark font-weight-light">0 Result</h2>
+      <h2 class="mt-5 mb-lg-5 mb-4 text-dark font-weight-light">0 Result</h2>
       <div class="row">
         <span class="col font-weight-light text-dark">No books have been found, please try again.</span>
       </div>
