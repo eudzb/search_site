@@ -28,7 +28,11 @@
             class="rounded shadow-sm"
             >
             <div class="d-flex flex-column justify-content-between ml-3">
-              <span class="font-weight-normal text-dark" style="font-size: 14px;"><%= hit._source.title %></span>
+              <% if (hit.highlight) { %>
+                <span class="text-dark" style="font-size: 14px;"><%- hit.highlight.title %></span>
+              <% } else { %>
+                <span class="font-weight-normal text-dark" style="font-size: 14px;"><%= hit._source.title %></span>
+              <% } %>
               <% hit._source.authors.forEach((author) => { %>
                 <span class="font-weight-light text-muted mt-1" style="font-size: 13px;"><%= author.name %></span>
               <% })%>
