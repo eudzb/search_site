@@ -4,8 +4,33 @@ const client = new elasticsearch.Client({
   host: 'localhost:9200',
 })
 
-async function search(query) {
-  const results = await client.search({
+async function search(query, sort) {
+  const customSort = [];
+  switch (sort) {
+	case 'relevance':
+	  customSort.push({
+		_score: {
+		  order: "desc",
+		}
+	  })
+	  break;
+	case 'download':
+	  customSort.push({
+		"download_count": {
+		  "order": "desc"
+		}
+	  })
+	  break;
+	case 'author_birth':
+	  customSort.push({
+		"authors.birth_year": {
+		  "order": "asc"
+		}
+	  })
+	  break;
+  }
+
+  const searchOption = {
 	index: "books",
 	body: {
 	  query: {
@@ -25,9 +50,12 @@ async function search(query) {
 		fields : {
 		  title : {}
 		}
-	  }
+	  },
+	  sort : customSort
 	}
-  })
+  }
+
+  const results = await client.search(searchOption)
   return results.hits;
 }
 

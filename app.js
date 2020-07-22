@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
 })
 
 app.get("/search", async (req, res) => {
-  const { hits, total } = await search(req.query.query)
+  const { hits, total } = await search(req.query.query, req.query.sortValue)
   res.render("results", {
     hits,
     total,
