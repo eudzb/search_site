@@ -20,8 +20,8 @@ async function search(query) {
 	    }
 	  },
 	  highlight : {
-		pre_tags : ["<b><i>"],
-        post_tags : ["</i></b>"],
+		pre_tags : ["<b class='text-info'>"],
+        post_tags : ["</b>"],
 		fields : {
 		  title : {}
 		}
