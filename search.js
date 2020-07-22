@@ -5,23 +5,23 @@ const client = new elasticsearch.Client({
 })
 
 async function search(query) {
-	const results = await client.search({
-		index: "books",
-		body: {
-			query: {
-				multi_match: {
-					query,
-					fields: [
-						"title^3",
-						"authors.name^2",
-						"subjects^1",
-          ],
-          fuzziness: "AUTO"
-				}
-			}
+  const results = await client.search({
+	index: "books",
+	body: {
+	query: {
+		multi_match: {
+		query,
+		fields: [
+			"title^3",
+			"authors.name^2",
+			"subjects^1",
+		],
+		fuzziness: "AUTO"
 		}
-	})
-	return results.hits
+	  }
+	}
+  })
+  return results.hits;
 }
 
 module.exports = search
