@@ -52,6 +52,7 @@
                 <select
                 name="authors"
                 class="form-control w-75">
+                    <option value="" selected>All</option>
                     <% aggs.forEach((agg) => { %>
                         <option value="<%= agg.key %>"><%= agg.key %></option>
                     <% })%>
